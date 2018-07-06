@@ -9,12 +9,12 @@ namespace ConsoleApp
 {
     interface ISort
     {
-        void Sort(ref List<int> L);
+        void Sort(List<int> L);
     }
 
     class BubbleSort : ISort
     {
-        public void Sort(ref List<int> L)
+        public void Sort(List<int> L)
         {
             bool ok = false;
             while (!ok)
@@ -34,7 +34,7 @@ namespace ConsoleApp
 
     class InjectionSort : ISort
     {
-        public void Sort(ref List<int> L)
+        public void Sort(List<int> L)
         {
             for (var i = 0; i < L.Count; ++i)
             {
@@ -67,7 +67,7 @@ namespace ConsoleApp
 
         public void Sort()
         {
-            algorithm.Sort(ref L);
+            algorithm.Sort(L);
         }
 
         public void Afis()
