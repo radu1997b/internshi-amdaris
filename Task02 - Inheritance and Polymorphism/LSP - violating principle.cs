@@ -24,7 +24,7 @@ namespace ConsoleApp
         {
             if (balance - amount < 0)
                 return false;
-            balance -= ammount
+            balance -= ammount;
             return true;
         }
         public override void BorrowMoney(int ammount)
