@@ -21,7 +21,7 @@ namespace ConsoleApp
             for (int i = 5; i < 10; ++i)
                 L.Add(i);
             for (int i = 0; i < 5; ++i)
-                WriteLine((String)L[i]);
+                WriteLine(L[i]);
             for (int i = 5; i < 10; ++i)
                 WriteLine((int)L[i]);
         } 
