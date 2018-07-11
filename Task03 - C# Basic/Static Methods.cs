@@ -22,9 +22,18 @@ namespace ConsoleApp
             Count++;
         }
 
+        public string getName()
+        {
+            return Name;
+            int x = Person.Count();
+        }
+
         public static void NumberOfPersons()
         {
             WriteLine("There are {0} persons.", Count);
+            var s = getName();
+            var obj = new Person("sfsad");
+            obj.getName();
         }
     }
     class Program

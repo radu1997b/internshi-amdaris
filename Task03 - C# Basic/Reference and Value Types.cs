@@ -11,7 +11,7 @@ namespace ConsoleApp
     class Car
     {
         private String Color;
-        private String Name;
+        public String Name;
         private int numOfSeats;
 
         public Car(String Color,String Name,int numOfSeats)
@@ -27,8 +27,13 @@ namespace ConsoleApp
         {
             // Reference Type
             var Ford = new Car("Red", "Ford Focus", 5);
+            Ford = new Car("asdas", "asdas", 2);
+            var Opel = Ford;
+            Opel.Name = "Opel";
             //Value Type
             int x = 10;
+            int y = x;
+            y = 20;
             WriteLine(x);
         } 
     }

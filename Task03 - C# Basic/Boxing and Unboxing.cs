@@ -19,7 +19,7 @@ namespace ConsoleApp
             for (int i = 0; i < 5; ++i)
                 L.Add("Numarul " + i.ToString());
             for (int i = 5; i < 10; ++i)
-                L.Add(i);
+                L.Add((Object)i);
             for (int i = 0; i < 5; ++i)
                 WriteLine(L[i]);
             for (int i = 5; i < 10; ++i)
