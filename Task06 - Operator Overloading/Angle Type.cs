@@ -11,9 +11,9 @@ namespace ConsoleApp
     class Angle : IComparable
     {
 
-        private int degrees;
-        private int minutes;
-        private int seconds;
+        public int Degrees { get; private set; }
+        public int Minutes { get; private set; }
+        public int Seconds { get; private set; }
         public Angle(int degrees = 0, int minutes = 0, int seconds = 0)
         {
             if (minutes < 0 || minutes >= 60)
@@ -24,9 +24,9 @@ namespace ConsoleApp
             {
                 seconds = 0;
             }
-            this.degrees = degrees;
-            this.minutes = minutes;
-            this.seconds = seconds;
+            this.Degrees = degrees;
+            this.Minutes = minutes;
+            this.Seconds = seconds;
         }
         public int CompareTo(object obj)
         {
@@ -35,48 +35,48 @@ namespace ConsoleApp
             Angle otherAngle = obj as Angle;
             if (otherAngle != null)
             {
-                if (degrees != otherAngle.degrees)
-                    return degrees - otherAngle.degrees;
-                else if (minutes != otherAngle.minutes)
-                    return minutes - otherAngle.minutes;
-                return seconds - otherAngle.seconds;
+                if (Degrees != otherAngle.Degrees)
+                    return Degrees - otherAngle.Degrees;
+                else if (Minutes != otherAngle.Minutes)
+                    return Minutes - otherAngle.Minutes;
+                return Seconds - otherAngle.Seconds;
             }
             else throw new ArgumentException("Object is not an Angle");
         }
         public static Angle operator+ (Angle a,Angle b)
         {
             Angle result = new Angle();
-            result.seconds = a.seconds + b.seconds;
-            if (result.seconds >= 60)
+            result.Seconds = a.Seconds + b.Seconds;
+            if (result.Seconds >= 60)
             {
-                result.minutes++;
-                result.seconds %= 60;
+                result.Minutes++;
+                result.Seconds %= 60;
             }
-            result.minutes += a.minutes + b.minutes;
-            if(result.minutes >= 60)
+            result.Minutes += a.Minutes + b.Minutes;
+            if(result.Minutes >= 60)
             {
-                result.degrees++;
-                result.minutes %= 60;
+                result.Degrees++;
+                result.Minutes %= 60;
             }
-            result.degrees += a.degrees + b.degrees;
+            result.Degrees += a.Degrees + b.Degrees;
             return result;
         }
         public static Angle operator- (Angle a,Angle b)
         {
             Angle result = new Angle();
-            result.seconds = a.seconds - b.seconds;
-            if(result.seconds < 0)
+            result.Seconds = a.Seconds - b.Seconds;
+            if(result.Seconds < 0)
             {
-                result.seconds += 60;
-                result.minutes--;
+                result.Seconds += 60;
+                result.Minutes--;
             }
-            result.minutes += a.minutes - b.minutes;
-            if(result.minutes < 0)
+            result.Minutes += a.Minutes - b.Minutes;
+            if(result.Minutes < 0)
             {
-                result.degrees--;
-                result.minutes += 60;
+                result.Degrees--;
+                result.Minutes += 60;
             }
-            result.degrees += a.degrees - b.degrees;
+            result.Degrees += a.Degrees - b.Degrees;
             return result;
         }
         public override bool Equals(object obj)
@@ -88,7 +88,7 @@ namespace ConsoleApp
         }
         public override int GetHashCode()
         {
-            return degrees + minutes + seconds;
+            return Degrees + Minutes + Seconds;
         }
         public static bool operator!= (Angle a,Angle b)
         {
@@ -116,18 +116,26 @@ namespace ConsoleApp
         }
         public override string ToString()
         {
-            return $"{degrees} deg {minutes}' {seconds}''";
+            return $"{Degrees} deg {Minutes}' {Seconds}''";
         }
 
+    }
+
+    class SortAnglesBySeconds : IComparer<Angle>
+    {
+        public int Compare(Angle x, Angle y)
+        {
+            return x.Seconds - y.Seconds;
+        }
     }
     class Program
     {
         static void Main()
         {
-            Angle a1 = new Angle(12, 45, 45);
-            Angle a2 = new Angle(2, 34, 55);
-            WriteLine(a1 >= a2);
-            a1 += a2;
-        }
+            List < Angle > L = new List<Angle>(new Angle[] { new Angle(1, 2, 3), new Angle(34, 2, 3), new Angle(4, 3, 2), new Angle(34, 56, 32) });
+            L.Sort();
+            foreach (var angle in L)
+                WriteLine(angle);
+         }
     }
 }
