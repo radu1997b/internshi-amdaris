@@ -44,6 +44,10 @@ namespace ConsoleApp
         protected char Color;
         protected int posx, posy;
         public string Name { get { return name;  } }
+        public Piece()
+        {
+            name = "Queen";
+        }
         public Piece(string name)
         {
             this.name = name;
@@ -83,7 +87,6 @@ namespace ConsoleApp
         {
             base.Move(x, y, B);
             B.PutPiece(this, x, y);
-            
         }
         public override void ShowMoveMessage()
         {
@@ -115,7 +118,20 @@ namespace ConsoleApp
 
         public static void Main(String[] args)
         {
+            var list = new List<Point>();
+            var list2 = new List<IInterface>();
 
+            
         }
+    }
+
+    struct Point : IInterface
+    {
+
+    }
+
+    interface IInterface
+    {
+
     }
 }
