@@ -38,13 +38,16 @@ namespace ConsoleApp
         }
         static int suma(int a,int b)
         {
+            a = 2;
+            b = 3;
+
             return a + b;
         }
         static void swap(ref int a,ref int b)
         {
             int aux = a;
             a = b;
-            b = aux;
+            b = aux;a = 5;b = 7;
         }
         static void CreateAPersonAndCar(out Person P,out Car C)
         {
