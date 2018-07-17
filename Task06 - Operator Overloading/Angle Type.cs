@@ -17,13 +17,9 @@ namespace ConsoleApp
         public Angle(int degrees = 0, int minutes = 0, int seconds = 0)
         {
             if (minutes < 0 || minutes >= 60)
-            {
-                minutes = 0;
-            }
+                throw new ArgumentOutOfRangeException(String.Format("minutes can/'t be {0}.", minutes));
             if(seconds < 0 || seconds >= 60)
-            {
-                seconds = 0;
-            }
+                throw new ArgumentOutOfRangeException(String.Format("seconds can/'t be {0}.", seconds));
             this.Degrees = degrees;
             this.Minutes = minutes;
             this.Seconds = seconds;
@@ -50,13 +46,13 @@ namespace ConsoleApp
             if (result.Seconds >= 60)
             {
                 result.Minutes++;
-                result.Seconds %= 60;
+                result.Seconds -= 60;
             }
             result.Minutes += a.Minutes + b.Minutes;
             if(result.Minutes >= 60)
             {
                 result.Degrees++;
-                result.Minutes %= 60;
+                result.Minutes -= 60;
             }
             result.Degrees += a.Degrees + b.Degrees;
             return result;
@@ -88,7 +84,7 @@ namespace ConsoleApp
         }
         public override int GetHashCode()
         {
-            return Degrees + Minutes + Seconds;
+            return Degrees*3600 + Minutes*60 + Seconds;
         }
         public static bool operator!= (Angle a,Angle b)
         {
