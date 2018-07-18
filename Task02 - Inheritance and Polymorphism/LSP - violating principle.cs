@@ -11,7 +11,10 @@ namespace ConsoleApp
     {
         protected int balance;
         public abstract bool PayMoney(int ammount);
-        public abstract void BorrowMoney(int ammount);
+        public virtual void BorrowMoney(int ammount)
+        {
+            balance += ammount;
+        }
     }
 
     public class BasicAccount : Account
