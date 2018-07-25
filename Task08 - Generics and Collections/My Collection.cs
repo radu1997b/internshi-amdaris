@@ -5,7 +5,7 @@ using System.Collections;
 
 namespace ConsoleApp
 {
-    class MyList<T> : ICollection<T>, IEnumerable<T> where T : IEquatable<T>
+    class MyList<T> : ICollection<T>, IEnumerable<T> 
     {
 
         private T[] arr;
