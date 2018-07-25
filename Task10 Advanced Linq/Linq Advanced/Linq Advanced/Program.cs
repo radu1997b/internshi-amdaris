@@ -69,7 +69,7 @@ namespace Linq_Advanced
                 WriteLine(r);
             //Gropuing operator
             WriteLine("\nGrouping operator result:");
-            var groupResult = personList.GroupBy(x => x.Age >= 40 );
+            var groupResult = personList.GroupBy(x => x.Age );
             foreach (var r in groupResult)
             {
                 foreach (var p in r)
